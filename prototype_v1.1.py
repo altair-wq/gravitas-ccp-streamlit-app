@@ -275,6 +275,52 @@ Map.add_layer_control()
 
 # Display the map
 Map.to_streamlit(height=600)
+legend_html = """
+<style>
+.legend {
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    background-color: white;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    z-index: 9999;
+    font-size: 13px;
+    max-width: 240px;
+}
+.legend h4 {
+    margin: 0 0 10px 0;
+    font-size: 15px;
+    font-weight: 600;
+}
+.legend-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+.color-box {
+    width: 24px;
+    height: 14px;
+    margin-right: 8px;
+    border: 1px solid #999;
+}
+</style>
+
+<div class="legend">
+    <h4>🌡️ Land Surface Temp (°C)</h4>
+    <div class="legend-row"><div class="color-box" style="background-color: #040274;"></div> 7–10</div>
+    <div class="legend-row"><div class="color-box" style="background-color: #235cb1;"></div> 11–15</div>
+    <div class="legend-row"><div class="color-box" style="background-color: #30c8e2;"></div> 16–20</div>
+    <div class="legend-row"><div class="color-box" style="background-color: #86e26f;"></div> 21–25</div>
+    <div class="legend-row"><div class="color-box" style="background-color: #fff705;"></div> 26–30</div>
+    <div class="legend-row"><div class="color-box" style="background-color: #ff6e08;"></div> 31–35</div>
+    <div class="legend-row"><div class="color-box" style="background-color: #ff0000;"></div> 36–40</div>
+    <div class="legend-row"><div class="color-box" style="background-color: #911003;"></div> 41–50</div>
+</div>
+"""
+
+st.components.v1.html(legend_html, height=400)
 
 st.header("How to read")
 st.write("To toggle on and off different masks, hover over the layers icon in the top right corner of the map.")
